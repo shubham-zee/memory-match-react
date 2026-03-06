@@ -135,4 +135,3 @@ export default function GameBoard({ pairs = 8, onStats }) {
     </>
   );
 }
-``;
