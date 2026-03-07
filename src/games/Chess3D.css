@@ -1,0 +1,111 @@
+.chess-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  perspective: 1200px;
+}
+
+.chess-info {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.turn-indicator {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 800;
+  margin: 10px 0;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.turn-indicator.white {
+  background: #eee;
+  color: #333;
+}
+.turn-indicator.black {
+  background: #333;
+  color: #eee;
+}
+
+.chess-scene {
+  width: 480px;
+  height: 480px;
+  transform: rotateX(45deg) rotateZ(-15deg);
+  transform-style: preserve-3d;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3);
+  border: 12px solid #5d4037;
+  border-radius: 8px;
+}
+
+.chess-board-3d {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.square {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.white-sq {
+  background-color: #f0d9b5;
+}
+.black-sq {
+  background-color: #b58863;
+}
+.selected-sq {
+  background-color: #764ba2 !important;
+}
+
+.piece-3d {
+  font-size: 2.5rem;
+  position: relative;
+  transform: rotateX(-45deg) translateZ(20px);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  user-select: none;
+  z-index: 10;
+}
+
+.selected-sq .piece-3d {
+  transform: rotateX(-45deg) translateZ(40px) scale(1.2);
+}
+
+.piece-shadow {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotateX(90deg);
+  width: 30px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  filter: blur(5px);
+}
+
+.reset-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.chess-footer {
+  margin-top: 60px;
+  color: #666;
+  font-style: italic;
+}
