@@ -26,16 +26,20 @@ export default function GameBoard({ pairs = 8, onStats }) {
     [deck],
   );
   useEffect(() => {
-    onStats?.({ moves, elapsed, matched: matchedCount / 2, totalPairs: pairs });
-    if (matchedCount === pairs * 2) {
-      onStats?.({
-        moves,
-        elapsed,
-        matched: pairs,
-        totalPairs: pairs,
-        complete: true,
-      });
-    }
+    const stats = {
+      moves,
+      elapsed,
+      matched: matchedCount / 2,
+      totalPairs: pairs,
+      complete: matchedCount === pairs * 2,
+    };
+
+    // Defer the callback to avoid synchronous cascading renders in the parent
+    const timeoutId = setTimeout(() => {
+      onStats?.(stats);
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
   }, [moves, elapsed, matchedCount, pairs, onStats]);
 
   function handleChoice(card) {
@@ -88,7 +92,16 @@ export default function GameBoard({ pairs = 8, onStats }) {
 
   return (
     <>
-      <div className="controls" style={{ marginTop: 16 }}>
+      <div
+        className="controls"
+        style={{
+          marginTop: 16,
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "8px",
+        }}
+      >
         <button className="btn primary" onClick={() => newGame(pairs)}>
           🔄 New Game
         </button>
@@ -103,7 +116,10 @@ export default function GameBoard({ pairs = 8, onStats }) {
         </button>
       </div>
 
-      <div className="board" style={{ gridTemplateColumns: `repeat(4, 1fr)` }}>
+      <div
+        className="board"
+        style={{ gridTemplateColumns: `repeat(auto-fit, minmax(70px, 1fr))` }}
+      >
         {deck.map((card) => {
           const isFlipped =
             card.id === choiceOne?.id ||

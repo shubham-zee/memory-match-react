@@ -69,7 +69,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/memory-match-react",
+    basename: "/memory-match-react/",
   },
 );
 

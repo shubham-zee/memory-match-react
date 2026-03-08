@@ -1,13 +1,14 @@
 import React, { useState, useCallback } from "react";
 import "./SimonSays.css";
 
-const COLORS = ["red", "blue", "green", "yellow"];
+const COLORS = ["red", "blue", "green", "yellow", "purple", "orange"];
 
 export default function SimonSays() {
   const [sequence, setSequence] = useState([]);
   const [userSequence, setUserSequence] = useState([]);
   const [isDisplaying, setIsDisplaying] = useState(false);
   const [activeColor, setActiveColor] = useState(null);
+  const [clickedColor, setClickedColor] = useState(null);
   const [gameState, setGameState] = useState("idle"); // idle, playing, gameover
 
   const startNewRound = useCallback(async (currentSequence) => {
@@ -27,6 +28,9 @@ export default function SimonSays() {
   }, []);
 
   const handleColorClick = (color) => {
+    setClickedColor(color);
+    setTimeout(() => setClickedColor(null), 300);
+
     if (isDisplaying || gameState !== "playing") return;
 
     const newUserSequence = [...userSequence, color];
@@ -58,7 +62,7 @@ export default function SimonSays() {
         {COLORS.map((color) => (
           <div
             key={color}
-            className={`simon-pad ${color} ${activeColor === color ? "active" : ""}`}
+            className={`simon-pad ${color} ${activeColor === color || clickedColor === color ? "active" : ""}`}
             onClick={() => handleColorClick(color)}
           />
         ))}

@@ -14,42 +14,47 @@ const games = [
     id: "reaction-timer",
     title: "Reaction Timer",
     description:
-      "How fast are your reflexes? Click when the screen turns green!",
+      "Test your reflexes! Click as fast as you can when the screen turns green.",
     icon: "⚡",
     path: "/reaction-timer",
   },
   {
     id: "emoji-whack",
     title: "Emoji Whack",
-    description: "Whack the hamster as fast as you can!",
+    description:
+      "A classic whack-a-mole game. How many hamsters can you catch?",
     icon: "🐹",
     path: "/emoji-whack",
   },
   {
     id: "simon-says",
     title: "Simon Says",
-    description: "Repeat the sequence of colors!",
+    description:
+      "Follow the pattern of colors and sounds. How long can you keep up?",
     icon: "🔴",
     path: "/simon-says",
   },
   {
     id: "space-dodge",
     title: "Space Dodge 3D",
-    description: "Avoid obstacles in this 3D space runner!",
+    description:
+      "Navigate your ship through a dangerous asteroid field in 3D space.",
     icon: "🚀",
     path: "/space-dodge",
   },
   {
     id: "dice-roller",
-    title: "3D Dice Roller",
-    description: "A simple 3D dice for your board games!",
+    title: "Ludo 3D",
+    description:
+      "Roll the 3D dice and race your pieces to the center in this classic board game.",
     icon: "🎲",
     path: "/dice-roller",
   },
   {
     id: "racing-3d",
     title: "Turbo Racer 3D",
-    description: "Dodge traffic at high speeds in this neon 3D racer!",
+    description:
+      "High-speed 3D racing action. Dodge traffic and set a new high score!",
     icon: "🏎️",
     path: "/racing-3d",
   },

@@ -77,3 +77,16 @@
   font-weight: bold;
   color: #e74c3c;
 }
+
+@media (max-width: 600px) {
+  .whack-grid {
+    gap: 8px;
+    padding: 10px;
+  }
+  .whack-mole {
+    font-size: 2.5rem;
+  }
+  .whack-stat {
+    font-size: 1rem;
+  }
+}

@@ -10,7 +10,7 @@ import {
   useTexture,
 } from "@react-three/drei";
 import "./Racing3D.css";
-import carImageUrl from "../../public/assets/carImage.png";
+import carImageUrl from "/assets/carImage.png";
 
 const LANES = [-1.5, 0, 1.5];
 const INITIAL_SPEED = 0.02;
@@ -155,14 +155,18 @@ export default function Racing3D() {
         )}
       </div>
 
-      <Canvas
-        shadows
-        onPointerDown={(e) => {
-          const x = e.clientX / window.innerWidth;
-          if (x < 0.5) setLane((l) => Math.max(0, l - 1));
-          else setLane((l) => Math.min(2, l + 1));
-        }}
-      >
+      <div className="touch-zones">
+        <div
+          className="zone-left"
+          onPointerDown={() => !gameOver && setLane((l) => Math.max(0, l - 1))}
+        />
+        <div
+          className="zone-right"
+          onPointerDown={() => !gameOver && setLane((l) => Math.min(2, l + 1))}
+        />
+      </div>
+
+      <Canvas shadows>
         <Suspense fallback={null}>
           <PerspectiveCamera makeDefault position={[0, 2, 10]} fov={50} />
           <Stars
@@ -202,7 +206,7 @@ export default function Racing3D() {
       </Canvas>
 
       <div className="racing-controls-hint">
-        Use ⬅️ and ➡️ keys to dodge traffic!
+        Tap sides or use ⬅️ ➡️ keys to dodge traffic!
       </div>
     </div>
   );

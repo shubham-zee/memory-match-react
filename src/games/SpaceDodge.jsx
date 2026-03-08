@@ -111,7 +111,9 @@ export default function SpaceDodge() {
         <div className="world">
           <div
             className="player-ship"
-            style={{ transform: `translateX(${playerPos * 140}px)` }}
+            style={{
+              transform: `translateX(calc(${playerPos} * var(--lane-width)))`,
+            }}
           >
             <div className="cube ship-cube">
               <div className="face f-front">🚀</div>
@@ -128,7 +130,7 @@ export default function SpaceDodge() {
               key={obs.id}
               className="obstacle-entity"
               style={{
-                transform: `translateX(${obs.lane * 140}px) translateZ(${obs.z}px)`,
+                transform: `translateX(calc(${obs.lane} * var(--lane-width))) translateZ(${obs.z}px)`,
               }}
             >
               <div className="cube obs-cube">

@@ -39,7 +39,8 @@ body,
 .app {
   max-width: 860px;
   margin: 32px auto;
-  padding: 24px;
+  padding: 24px 0;
+  overflow: hidden;
 }
 
 .header {
