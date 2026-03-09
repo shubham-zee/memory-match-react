@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import HeroScrollImage from "./HeroScrollImage";
 
 const games = [
   {
@@ -62,17 +63,20 @@ const games = [
 
 export default function Home() {
   return (
-    <div className="home-container">
-      <h1>Choose a Game</h1>
-      <div className="game-grid">
-        {games.map((game) => (
-          <Link to={game.path} key={game.id} className="game-card">
-            <div className="game-icon">{game.icon}</div>
-            <h3>{game.title}</h3>
-            <p>{game.description}</p>
-          </Link>
-        ))}
+    <>
+      <HeroScrollImage />
+      <div className="home-container">
+        <h1>Choose a Game</h1>
+        <div className="game-grid">
+          {games.map((game) => (
+            <Link to={game.path} key={game.id} className="game-card">
+              <div className="game-icon">{game.icon}</div>
+              <h3>{game.title}</h3>
+              <p>{game.description}</p>
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

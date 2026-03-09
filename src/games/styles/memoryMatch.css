@@ -15,7 +15,8 @@
 html,
 body,
 #root {
-  height: 100%;
+  /* height: 100%; */
+  position: relative;
   margin: 0;
   background:
     radial-gradient(1200px 600px at 70% 20%, #111827, #0b1022) no-repeat,
@@ -34,13 +35,6 @@ body,
     "Noto Sans",
     "Apple Color Emoji",
     "Segoe UI Emoji";
-}
-
-.app {
-  max-width: 860px;
-  margin: 32px auto;
-  padding: 24px 0;
-  overflow: hidden;
 }
 
 .header {
